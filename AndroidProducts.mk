@@ -14,9 +14,9 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/revengeos_ali.mk
+    $(LOCAL_DIR)/aosp_ali.mk
 
 COMMON_LUNCH_CHOICES := \
-    revengeos_ali-user \
-    revengeos_ali-userdebug \
-    revengeos_ali-eng
+    aosp_ali-user \
+    aosp_ali-userdebug \
+    aosp_ali-eng
