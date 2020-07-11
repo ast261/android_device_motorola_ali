@@ -1,5 +1,5 @@
 #
-# props for sdm632
+# props for ali
 #
 
 # Audio
@@ -10,9 +10,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     audio.offload.video=false \
     persist.vendor.audio.dualmic.config=endfire \
     persist.vendor.audio.fluence.audiorec=false \
-    persist.vendor.audio.fluence.speaker=false \
-    persist.vendor.audio.fluence.voicecall=false \
-    persist.vendor.audio.fluence.voicecomm=false \
+    persist.vendor.audio.fluence.speaker=true \
+    persist.vendor.audio.fluence.voicecall=true \
+    persist.vendor.audio.fluence.voicecomm=true \
     persist.vendor.audio.fluence.voicerec=false \
     persist.vendor.audio.hw.binder.size_kbyte=1024 \
     persist.vendor.audio.ras.enabled=false \
@@ -43,6 +43,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.use.sw.ape.decoder=true \
     vendor.voice.path.for.pcm.voip=true \
     vendor.audio.offload.min.duration.secs=60
+
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.config.vc_call_vol_steps=7 \
+	ro.config.media_vol_steps=25
 
 # Audio ACDB
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -103,10 +107,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.display.enable_default_color_mode=1 \
     vendor.gralloc.enable_fb_ubwc=1 \
     sys.display-size=1920x1080
-
-# Face Unlock
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.face.moto_unlock_service.cam_id=5
 
 # Factory reset partition
 PRODUCT_PROPERTY_OVERRIDES += \

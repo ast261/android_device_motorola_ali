@@ -14,20 +14,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
--include vendor/motorola/ali/BoardConfigVendor.mk
-
 DEVICE_PATH := device/motorola/ali
 
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
+# Board
 BOARD_VENDOR := motorola-qcom
-
-WITH_LINEAGE_CHARGER := false
 
 # AIDs and CAPS
 TARGET_FS_CONFIG_GEN += \
-    $(DEVICE_PATH)/config.fs \
-    $(DEVICE_PATH)/mot_aids.fs
+    $(DEVICE_PATH)/configs/config.fs \
+    $(DEVICE_PATH)/configs/mot_aids.fs
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8953
@@ -67,28 +64,19 @@ USE_DEVICE_SPECIFIC_GPS := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 
 # Kernel
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=30 msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 vmalloc=400M androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-BOARD_KERNEL_CMDLINE := \
-     console=ttyHSL0,115200,n8 \
-     androidboot.console=ttyHSL0 \
-     androidboot.hardware=qcom \
-     user_debug=30 \
-     msm_rtb.filter=0x237 \
-     ehci-hcd.park=3 \
-     androidboot.bootdevice=7824900.sdhci \
-     lpm_levels.sleep_disabled=1 \
-     vmalloc=400M \
-     androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET := 0x01000000
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_DTBTOOL_ARGS := --force-v3
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CONFIG := ali_defconfig
 TARGET_KERNEL_SOURCE := kernel/motorola/sdm450
 TARGET_KERNEL_VERSION := 3.18
+
 KERNEL_TOOLCHAIN := $(PWD)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-4.9/bin
 
 # Audio
@@ -187,8 +175,8 @@ TARGET_PROVIDES_KEYMASTER := true
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Manifest
-DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/configs/manifest.xml
-DEVICE_MATRIX_FILE   := $(DEVICE_PATH)/configs/compatibility_matrix.xml
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
+DEVICE_MATRIX_FILE   := $(DEVICE_PATH)/compatibility_matrix.xml
 
 # NFC
 BOARD_NFC_CHIPSET := pn553
@@ -222,7 +210,6 @@ BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 TARGET_PER_MGR_ENABLED := true
 
 # Power
-BOARD_POWER_CUSTOM_BOARD_LIB := libpower_8953
 TARGET_HAS_NO_WLAN_STATS := true
 TARGET_USES_INTERACTION_BOOST := true
 
@@ -243,7 +230,6 @@ TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 TARGET_USES_OLD_MNC_FORMAT := true
 TARGET_USES_ALTERNATIVE_MANUAL_NETWORK_SELECT := true
 ENABLE_VENDOR_RIL_SERVICE := true
-
 
 # SELinux
 #include device/qcom/sepolicy-legacy-um/sepolicy.mk
@@ -291,3 +277,5 @@ WIFI_DRIVER_FW_PATH_P2P          := "p2p"
 WIFI_HIDL_FEATURE_DISABLE_AP_MAC_RANDOMIZATION := true
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
 TARGET_DISABLE_WCNSS_CONFIG_COPY := true
+
+-include vendor/motorola/ali/BoardConfigVendor.mk

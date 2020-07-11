@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 /*
-** Copyright 2014, The Android Open Source Project
+** Copyright 2020, ronaxdevil <pratabidya.007@gmail.com>
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -21,7 +21,12 @@
               android:orientation="vertical"
               android:layout_height="match_parent"
               android:layout_width="match_parent">
-
-    <include layout="@layout/switch_bar" />
+       
+    <ImageView
+        android:id="@+id/gesture_pic"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/gesture_png" />
 
 </LinearLayout>

@@ -443,7 +443,7 @@ public class KeyHandler implements DeviceKeyHandler {
         if (event.getAction() != KeyEvent.ACTION_UP) {
             return null;
         }
-        
+
         if (isFPScanCode){
             if (fpGesturePending) {
                 return event;

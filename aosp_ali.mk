@@ -14,12 +14,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
 # Inherit from those products. Most specific first.
-$(call inherit-product, device/motorola/ali/full_ali.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o.mk)
+
+# Inherit from ali device
+$(call inherit-product, device/motorola/ali/device.mk)
 
 # Inherit some common PixelExperience stuff.
 TARGET_GAPPS_ARCH := arm64
@@ -36,9 +37,10 @@ TARGET_SCREEN_HEIGHT := 1920
 TARGET_BOOT_ANIMATION_RES := 1080
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := ali
 PRODUCT_NAME := aosp_ali
+PRODUCT_DEVICE := ali
 PRODUCT_BRAND := motorola
+PRODUCT_MODEL := Moto G6
 PRODUCT_MANUFACTURER := motorola
 
 PRODUCT_ENFORCE_RRO_TARGETS := \
@@ -48,4 +50,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="ali-user 8.1.0 OPPS28.85-13-2 d04a4 release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := "google/coral/coral:10/QQ3A.200605.001/6392402:user/release-keys"
+BUILD_FINGERPRINT := google/walleye/walleye:8.1.0/OPM1.171019.011/4448085:user/release-keys
+
+# for specific
+$(call inherit-product, vendor/motorola/ali/ali-vendor.mk)
